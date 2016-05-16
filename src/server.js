@@ -32,7 +32,7 @@ import Venue from './data/models/Venue';
 const app = express();
 
 
-
+var port=Number(process.env.PORT || 3000);
 
 
 var yelp = require("node-yelp");
