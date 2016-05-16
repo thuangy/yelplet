@@ -595,7 +595,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 // -----------------------------------------------------------------------------
 /* eslint-disable no-console */
 models.sync().catch(err => console.error(err.stack)).then(() => {
-  app.listen(process.env.PORT || 3000, () => {
+  app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
     console.log(`The server is running at http://localhost:${port}/`);
 
 
