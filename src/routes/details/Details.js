@@ -9,9 +9,9 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Contact.scss';
+import s from './Details.scss';
 
-const title = 'Contact Us';
+const title = 'Details';
 
 //import fetch from '../../core/fetch';
 
@@ -26,7 +26,7 @@ const title = 'Contact Us';
 var url_parts = url.parse(request.url, true);
 var query = url_parts.query;*/
 
-function Contact(props, context) {
+function Details(props, context) {
 
   //console.log(context);
   //console.log(props);
@@ -44,11 +44,10 @@ function Contact(props, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
-        <h1>Search Results</h1>
     </div>
   );
 }
 
-Contact.contextTypes = { setTitle: PropTypes.func.isRequired };
+Details.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Contact);
+export default withStyles(s)(Details);

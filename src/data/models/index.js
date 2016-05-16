@@ -12,6 +12,9 @@ import User from './User';
 import UserLogin from './UserLogin';
 import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
+import Venue from './Venue';
+
+//sequelize.sync({force:true});
 
 User.hasMany(UserLogin, {
   foreignKey: 'userId',
@@ -34,9 +37,10 @@ User.hasOne(UserProfile, {
   onDelete: 'cascade',
 });
 
+
 function sync(...args) {
   return sequelize.sync(...args);
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile };
+export { User, UserLogin, UserClaim, UserProfile, Venue };

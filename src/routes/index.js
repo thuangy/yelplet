@@ -17,6 +17,26 @@ import login from './login';
 import register from './register';
 import content from './content';
 import error from './error';
+import details from './details';
+
+
+/*var models  = require('../data/models');
+var express = require('express');
+var router  = express.Router();
+
+router.get('/details', function(req, res) {
+  models.Venue.findAll({
+  }).then(function(venues) {
+    res.render('index', {
+      title: 'Express',
+      venues: venues
+    });
+  });
+});
+
+module.exports = router;*/
+
+
 
 export default {
 
@@ -29,6 +49,7 @@ export default {
     register,
     content,
     error,
+    details,
   ],
 
   async action({ next, render, context }) {

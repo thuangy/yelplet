@@ -12,7 +12,7 @@ import Contact from './Contact';
 
 export default {
 
-  path: '/contact',
+  path: '/search',
 
   action() {
     return <Contact />;

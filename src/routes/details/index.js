@@ -8,14 +8,14 @@
  */
 
 import React from 'react';
-import Login from './Login';
+import Details from './Details';
 
 export default {
 
   path: '/details',
 
   action() {
-    return <Login />;
+    return <Details />;
   },
 
 };

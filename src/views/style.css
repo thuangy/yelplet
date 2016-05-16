@@ -1,0 +1,30 @@
+a {
+    text-decoration: none;
+    color: black;
+    padding: 3px;
+    margin-left: 20px;
+}
+
+a:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+#home:hover {
+	background-color: rgba(0,0,0,0);
+}
+
+#detail {
+	margin-left: 50px;
+}
+
+#form {
+	padding: 50px;
+}
+
+#zipCode {
+	margin-left: 20px;
+}
+
+#category {
+	margin-left: 16px;
+}
