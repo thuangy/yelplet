@@ -17,6 +17,10 @@ const Venue = Model.define('Venue', {
     type: DataType.STRING(256),
   },
 
+  image: {
+    type: DataType.STRING()
+  },
+
   blurb: {
     type: DataType.STRING()
   },
@@ -28,10 +32,6 @@ const Venue = Model.define('Venue', {
   views: {
     type: DataType.STRING()
   }
-
-  /*comments: {
-    type: DataTypes.ARRAY(DataTypes.STRING()),
-  }*/
 
 });
 

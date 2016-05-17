@@ -32,3 +32,8 @@ a:hover {
 h1 {
 	padding-left: 130px;
 }
+
+#venue_pic {
+	float: right;
+    padding-right: 60%;
+}

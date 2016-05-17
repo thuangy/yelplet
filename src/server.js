@@ -86,8 +86,6 @@ app.use(passport.initialize());
 app.get('/search', async (req, res, next) => {
 
   var passedVariable = req.query.valid;
-    //console.log(passedVariable);
-    //res.send(passedVariable);
 
 
   try {
@@ -118,11 +116,8 @@ app.get('/search', async (req, res, next) => {
     });
 
     res.status(statusCode);
-    //console.log(template(data) + "<p>Hellooooooo</p>");
 
     var arr = passedVariable.split("/*/");
-
-    //console.log(arr);
 
     var links = "";
     for (var k = 0; k < arr.length; k++) {
@@ -145,18 +140,6 @@ app.get('/details', async (req, res, next) => {
   
 
   var passedVariable = req.query.valid;
-
-  //console.log(passedVariable);
-  /*Venue.findAll({
-    console.log('FINDING');
-  }).then(function(venues) {
-    console.log('HELOOOOOOOOOOOOOOOOO');
-    //console.log(venues);
-    res.render('index', {
-      title: 'Express',
-      venues: venues
-    });
-  });*/
 
 
   try {
@@ -194,9 +177,6 @@ app.get('/details', async (req, res, next) => {
   Venue.findOne({ 
     where: {name: passedVariable} 
   }).then(function(venues) {
-  // project will be the first entry of the Projects table with the title 'aProject' || null
-    //console.log("FOUND!");
-    //console.log(venues);
 
     venues.views += new Date().toString() + "/*/";
 
@@ -209,6 +189,8 @@ app.get('/details', async (req, res, next) => {
       var info = venues.blurb.split("/*/");
 
       var description = "<div id='detail'><h2>" + venues.name + "</h2>" + "<br>";// + venues.blurb + "<br>";
+
+      description += "<img id='venue_pic'src='" + venues.image + "'>";
 
       for (var j = 0; j < info.length; j++) {
         if (info[j] === "") {
@@ -228,9 +210,6 @@ app.get('/details', async (req, res, next) => {
 
       description += "<form method='post'><input type='text' name='comment'>" + "<br>" + "<input type='submit' value='Add Comment'></form></div>";
 
-      //description += venues.views;
-
-      //res.send(description);
       res.send(template(data) + description);
     }
     
@@ -310,86 +289,27 @@ app.get('*', async (req, res, next) => {
 });
 
 
-
-
-
-/*var flash = require('express-flash'),
-      express = require('express'),
-      app = express();
- 
-  app.use(express.cookieParser('keyboard cat'));
-  app.use(express.session({ cookie: { maxAge: 60000 }}));
-
-app.use(flash());*/
-
-
-/*app.get('/about', function(req, res, next) {
-// in here you can access the invitation id with req.params.invitation
-  res.render('about', {businesses: res.locals.businesses});
-
-});*/
-
 var string;
 
 app.set('view engine', 'jade');
 
-//var localStorage = require('localStorage');
-
-//import './data/sequelize';
-
-//console.log(Venue);
-
-/*var Venue = sequelize.define('venue', {
-  name: sequelize.STRING,
-  blurb: sequelize.STRING
-})*/
-
-/*Venue.create({ name: 'foo', description: 'bar', deadline: new Date() }).then(function(task) {
-  // you can now access the newly created task via the variable task
-})*/
- 
-// now instantiate an object
-/*var venue = Task.build({title: 'very important task'})
- 
-task.title  // ==> 'very important task'
-task.rating // ==> 3*/
 
 app.post('/details', function(req, res) {
   var passedVariable = req.query.valid;
-  //console.log("HELLOOOOO");
-  //console.log(req.body);
-
-  //req.body.comment 
 
 
   Venue.findOne({ 
     where: {name: passedVariable} 
   }).then(function(venues) {
 
-
-  // project will be the first entry of the Projects table with the title 'aProject' || null
-    //console.log("FOUND!");
-    //console.log(venues);
     if (venues !== null) {
 
-      //console.log(req.body);
       venues.comments += req.body.comment + "/*/";
 
       venues.save().then(function() {});
 
       res.redirect('back');
 
-      //var description = venues.name + "<br>" + venues.blurb + "<br>";
-
-      //var arr = venues.comments.split("/*/");
-
-      /*for (var i = 0; i < arr.length; i++) {
-        description += "<p>" + arr[i] + "</p>" + "<br>"; 
-      }
-
-      description += "<form method='post'><input type='text'>" + "<br>" + "<input type='submit' value='Add Comment'></form>";
-
-      res.send(description);*/
     }
     
   });
@@ -400,9 +320,6 @@ app.post('/details', function(req, res) {
 
 
 app.post('*', function(req, res, next){
-  //console.log(req.body.zipCode);
-  //res.send('POST request to the homepage');
-
 
   client.search({
     term: req.body.category,
@@ -410,18 +327,10 @@ app.post('*', function(req, res, next){
     limit: 5
   }).then(function (data) {
 
-    //console.log(data);
     businesses = data.businesses;
-    //console.log(businesses);
-    //res.send('HERROOOOO');
-
-
 
     string = '';
     for (var i=0; i < businesses.length; i++) {
-      //console.log(businesses[i].location.postal_code);
-
-
 
       var current = businesses[i];
       console.log(current);
@@ -436,75 +345,14 @@ app.post('*', function(req, res, next){
 
       info += current.display_phone + "/*/";
 
-      /*Venue
-        .build({ name: current.name, blurb: current.snippet_text })
-        .save()
-        .then(function(anotherTask) {
-          // you can now access the currently saved task with the variable anotherTask... nice!
-        }).catch(function(error) {
-          // Ooops, do some error-handling
-        });*/
-
-      /*Venue.findOrCreate({where: { name: current.name, blurb: current.snippet_text }, defaults: {comments: ""}}).then(function(venue) {
-        // you can now access the newly created task via the variable task
-      })*/
-    
-
-      Venue.create({ name: current.name, blurb: info, comments: "", views: ""}).then(function(venue) {
-        // you can now access the newly created task via the variable task
+      Venue.create({ name: current.name, image: current.image_url, blurb: info, comments: "", views: ""}).then(function(venue) {
       })
 
-
-      /*Venue.findAll({ 
-        where: {name: current.name} 
-      }).then(function(venues) {
-      // project will be the first entry of the Projects table with the title 'aProject' || null
-        //console.log("FOUND!");
-        //console.log(venues);
-        //res.send(venues);
-      });*/
-
-
-      /*var venue = new Venue({
-        name: current.name,
-        blurb: current.snippet_text
-      });*/
-
-      //console.log(current);
-
       string += current.name + "/*/";
-
-      //string += current.snippet_text + "\n";
-      //string += businesses[i].location.postal_code + '\n';
-      //res.send('' + businesses[i].location.postal_code + '\n');
     }
-
-    //console.log(req.session);
-
-    //req.session['businesses'] = string;
-
-    //res.locals.session = req.session;
-
-    //session.businesses = string;
-
-    //res.locals.businesses = string;
-
-    //localStorage.setItem("names",string);
-
-    //module.exports.businesses = string;
-
-    //console.log(req.session);
-
-    //res.render('about', {businesses: string});
-
-    //req.flash('info', string);
 
     string = encodeURIComponent(string);
     res.redirect('/search?valid=' + string);
-
-    //res.redirect('/contact');
-    //res.send(string);
-    //return next();
     
 
   });
@@ -517,41 +365,9 @@ app.use(function(req,res,next){
 });
 
 
-
-
-
-/*var router  = express.Router();
-
-router.get('/details', function(req, res) {
-  models.Venue.findAll({
-    console.log('FINDING');
-  }).then(function(venues) {
-    console.log('HELOOOOOOOOOOOOOOOOO');
-    //console.log(venues);
-    res.render('index', {
-      title: 'Express',
-      venues: venues
-    });
-  });
-});
-
-module.exports = router;*/
-
-
-
-/*app.get('/contact', function(req, res) {
-    //render index.ejs file
-    res.render('contact', {val: string});
-});*/
-
-
-
 function businesses() {
   return string;
 }
-
-
-//app.use(app.router);
 
 
 
@@ -584,15 +400,6 @@ models.sync().catch(err => console.error(err.stack)).then(() => {
     console.log(`The server is running at http://localhost:${port}/`);
 
 
-    /*models.Venue.findOne({ 
-        where: {name: passedVariable} 
-      }).then(venues) {
-      // project will be the first entry of the Projects table with the title 'aProject' || null
-        console.log("FOUND!");
-        console.log(venues);
-        res.send(venues);
-      });*/
-
   });
 });
 
@@ -600,13 +407,6 @@ models.sync().catch(err => console.error(err.stack)).then(() => {
 
 /* eslint-enable no-console */
 
-
-
-
-
-/*app.post('/', function(sReq, sRes){     
-    console.log(sReq.query);
-}*/
 
 
 
