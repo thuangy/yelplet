@@ -32,9 +32,6 @@ import Venue from './data/models/Venue';
 const app = express();
 
 
-var port=Number(process.env.PORT || 3000);
-
-
 var yelp = require("node-yelp");
 
 var businesses;
@@ -325,15 +322,6 @@ app.get('*', async (req, res, next) => {
 
 app.use(flash());*/
 
-var session = require('express-session');
-
-app.use(session({
-  cookieName: 'session',
-  secret: 'random_string_goes_here',
-  duration: 30 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000,
-}));
-
 
 /*app.get('/about', function(req, res, next) {
 // in here you can access the invitation id with req.params.invitation
@@ -490,9 +478,6 @@ app.post('*', function(req, res, next){
       //string += businesses[i].location.postal_code + '\n';
       //res.send('' + businesses[i].location.postal_code + '\n');
     }
-
-
-    app.use(session({ secret: string, cookie: { maxAge: 60000 }}))
 
     //console.log(req.session);
 

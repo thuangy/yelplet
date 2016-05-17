@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": ">=5.0 <6",
+    "node": ">=5.0 <=6",
     "npm": ">=3.3 <4"
   },
   "dependencies": {
@@ -156,6 +156,6 @@
     "bundle": "babel-node tools/run bundle",
     "build": "babel-node tools/run build",
     "deploy": "babel-node tools/run deploy",
-    "start": "NODE_ENV=production node server.js"
+    "start": "babel-node tools/run start"
   }
 }

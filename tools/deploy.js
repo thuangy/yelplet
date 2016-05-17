@@ -15,8 +15,8 @@ import fetch from './lib/fetch';
 // For more information visit http://gitolite.com/deploy.html
 const getRemote = (slot) => ({
   name: slot || 'production',
-  url: `https://git.heroku.com/nameless-savannah-96015.git`,
-  website: `http://nameless-savannah-96015.herokuapp.com`,
+  url: `https://git.heroku.com/secret-refuge-47718.git`,
+  website: `http://secret-refuge-47718.herokuapp.com`,
 });
 
 /**
