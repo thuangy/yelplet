@@ -208,7 +208,7 @@ app.get('/details', async (req, res, next) => {
 
       var info = venues.blurb.split("/*/");
 
-      var description = "<div id='detail'><h1>" + venues.name + "</h1>" + "<br>";// + venues.blurb + "<br>";
+      var description = "<div id='detail'><h2>" + venues.name + "</h2>" + "<br>";// + venues.blurb + "<br>";
 
       for (var j = 0; j < info.length; j++) {
         if (info[j] === "") {
@@ -424,7 +424,7 @@ app.post('*', function(req, res, next){
 
 
       var current = businesses[i];
-      //console.log(current);
+      console.log(current);
 
       var info = "";
 
@@ -481,17 +481,17 @@ app.post('*', function(req, res, next){
 
     //console.log(req.session);
 
-    req.session['businesses'] = string;
+    //req.session['businesses'] = string;
 
     //res.locals.session = req.session;
 
     //session.businesses = string;
 
-    res.locals.businesses = string;
+    //res.locals.businesses = string;
 
     //localStorage.setItem("names",string);
 
-    module.exports.businesses = string;
+    //module.exports.businesses = string;
 
     //console.log(req.session);
 

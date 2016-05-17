@@ -27,6 +27,7 @@
     "jsonwebtoken": "5.7.0",
     "markdown-it": "6.0.1",
     "node-fetch": "1.5.1",
+    "node-yelp": "0.0.3",
     "normalize.css": "4.1.1",
     "passport": "0.3.2",
     "passport-facebook": "2.1.0",

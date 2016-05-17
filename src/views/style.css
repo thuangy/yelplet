@@ -2,7 +2,7 @@ a {
     text-decoration: none;
     color: black;
     padding: 3px;
-    margin-left: 20px;
+    margin-left: 150px;
 }
 
 a:hover {
@@ -14,7 +14,7 @@ a:hover {
 }
 
 #detail {
-	margin-left: 50px;
+	margin-left: 150px;
 }
 
 #form {
@@ -27,4 +27,8 @@ a:hover {
 
 #category {
 	margin-left: 16px;
+}
+
+h1 {
+	padding-left: 130px;
 }
